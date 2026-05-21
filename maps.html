@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dora — Documentation(Maps)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d0d;
+  --ink-2:#3a3a3a;
+  --ink-3:#6b6b6b;
+  --ink-4:#9a9a9a;
+  --paper:#fafaf7;
+  --paper-2:#f2f2ed;
+  --paper-3:#e8e8e1;
+  --accent:#1a3a2a;
+  --accent-2:#2d6b4a;
+  --accent-light:#d4ede0;
+  --accent-pale:#eef7f2;
+  --mono:#1e1e1e;
+  --code-bg:#f0f0eb;
+  --rule:#d0d0c8;
+  --warn:#7a4a00;
+  --warn-bg:#fff8ec;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Syne',sans-serif;
+  --mono-font:'DM Mono',monospace;
+  --sidebar:260px;
+  --content:720px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.7;
+  display:flex;
+  min-height:100vh;
+}
+
+/* ── Sidebar ── */
+#sidebar{
+  width:var(--sidebar);
+  min-height:100vh;
+  background:var(--paper-2);
+  border-right:1px solid var(--rule);
+  position:sticky;
+  top:0;
+  height:100vh;
+  overflow-y:auto;
+  flex-shrink:0;
+  padding:0 0 3rem 0;
+}
+.sidebar-logo{
+  padding:1.75rem 1.5rem 1.25rem;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:0.75rem;
+}
+.sidebar-logo .brand{
+  font-family:var(--mono-font);
+  font-size:1.1rem;
+  font-weight:500;
+  color:var(--accent);
+  letter-spacing:-0.01em;
+}
+.sidebar-logo .tagline{
+  font-size:0.72rem;
+  color:var(--ink-3);
+  margin-top:0.2rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+}
+.nav-section{
+  padding:0.5rem 1.5rem 0.25rem;
+  font-size:0.67rem;
+  font-weight:600;
+  color:var(--ink-4);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-top:0.75rem;
+}
+.nav-link{
+  display:block;
+  padding:0.3rem 1.5rem 0.3rem 1.75rem;
+  font-size:0.82rem;
+  color:var(--ink-2);
+  text-decoration:none;
+  transition:all 0.15s;
+  border-left:2px solid transparent;
+  margin-left:-2px;
+}
+.nav-link:hover{color:var(--accent);background:var(--accent-pale)}
+.nav-link.active{color:var(--accent);border-left-color:var(--accent-2);background:var(--accent-pale);font-weight:500}
+.nav-sub{
+  padding-left:2.5rem;
+  font-size:0.77rem;
+  color:var(--ink-3);
+}
+
+/* ── Main content ── */
+#main{
+  flex:1;
+  max-width:calc(var(--content) + 8rem);
+  margin:0 auto;
+  padding:3rem 4rem 6rem;
+}
+
+/* ── Hero ── */
+.hero{
+  padding:3.5rem 0 3rem;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:3rem;
+}
+.hero-eyebrow{
+  font-size:0.72rem;
+  font-weight:600;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--accent-2);
+  margin-bottom:1rem;
+}
+.hero h1{
+  font-family:var(--serif);
+  font-size:3.2rem;
+  font-weight:400;
+  line-height:1.15;
+  color:var(--ink);
+  letter-spacing:-0.02em;
+  margin-bottom:1.25rem;
+}
+.hero h1 em{color:var(--accent-2);font-style:italic}
+.hero-desc{
+  font-size:1.1rem;
+  color:var(--ink-2);
+  max-width:580px;
+  line-height:1.75;
+  margin-bottom:1.75rem;
+}
+.hero-badges{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.badge{
+  font-family:var(--mono-font);
+  font-size:0.72rem;
+  font-weight:500;
+  padding:0.25rem 0.6rem;
+  border-radius:3px;
+  border:1px solid var(--rule);
+  color:var(--ink-2);
+  background:var(--paper);
+}
+.badge.green{border-color:#a8d5b8;color:var(--accent);background:var(--accent-pale)}
+.badge.mono{background:var(--mono);color:#e0e0e0;border-color:var(--mono)}
+.hero-install{
+  background:var(--mono);
+  color:#e8e8e8;
+  font-family:var(--mono-font);
+  font-size:0.85rem;
+  padding:0.9rem 1.25rem;
+  border-radius:6px;
+  display:inline-flex;
+  align-items:center;
+  gap:0.75rem;
+}
+.hero-install .prompt{color:#888;user-select:none}
+
+/* ── Section headings ── */
+.section{margin-bottom:3.5rem}
+h2{
+  font-family:var(--serif);
+  font-size:1.9rem;
+  font-weight:400;
+  color:var(--ink);
+  letter-spacing:-0.015em;
+  margin-bottom:0.5rem;
+  padding-top:0.5rem;
+}
+h2 .num{
+  font-family:var(--mono-font);
+  font-size:0.85rem;
+  color:var(--accent-2);
+  margin-right:0.5rem;
+  font-weight:500;
+}
+h3{
+  font-size:1rem;
+  font-weight:600;
+  color:var(--ink);
+  margin:1.75rem 0 0.6rem;
+  letter-spacing:0.01em;
+}
+h4{
+  font-size:0.9rem;
+  font-weight:600;
+  color:var(--ink-2);
+  margin:1.25rem 0 0.4rem;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+.section-intro{
+  font-size:0.95rem;
+  color:var(--ink-2);
+  margin-bottom:1.5rem;
+  line-height:1.8;
+  max-width:640px;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:1.25rem;
+}
+p{margin-bottom:1rem;font-size:0.95rem;color:var(--ink-2);line-height:1.8}
+li{font-size:0.95rem;color:var(--ink-2);line-height:1.8;margin-bottom:0.3rem}
+ul,ol{padding-left:1.5rem;margin-bottom:1rem}
+strong{font-weight:600;color:var(--ink)}
+
+/* ── Code blocks ── */
+pre{
+  background:var(--code-bg);
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:1.1rem 1.25rem;
+  overflow-x:auto;
+  margin:1rem 0 1.25rem;
+  font-family:var(--mono-font);
+  font-size:0.82rem;
+  line-height:1.6;
+  color:var(--mono);
+}
+code{
+  font-family:var(--mono-font);
+  font-size:0.82em;
+  background:var(--code-bg);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  padding:0.1em 0.35em;
+  color:var(--mono);
+}
+pre code{background:none;border:none;padding:0;font-size:1em}
+.comment{color:#6b7280}
+.keyword{color:#065f46}
+.string{color:#78350f}
+.fn-name{color:#1e40af}
+.type{color:#7c3aed}
+
+/* ── Tables ── */
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.88rem;
+  margin:1rem 0 1.5rem;
+}
+th{
+  background:var(--paper-2);
+  font-weight:600;
+  font-size:0.78rem;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--ink-3);
+  padding:0.6rem 0.9rem;
+  border:1px solid var(--rule);
+  text-align:left;
+}
+td{
+  padding:0.55rem 0.9rem;
+  border:1px solid var(--rule);
+  color:var(--ink-2);
+  vertical-align:top;
+}
+tr:nth-child(even) td{background:var(--paper-2)}
+
+/* ── Callouts ── */
+.callout{
+  border-left:3px solid var(--accent-2);
+  background:var(--accent-pale);
+  padding:0.9rem 1.1rem;
+  border-radius:0 6px 6px 0;
+  margin:1.25rem 0;
+}
+.callout.warn{
+  border-left-color:#b45309;
+  background:var(--warn-bg);
+}
+.callout p{margin:0;font-size:0.88rem}
+.callout-title{font-weight:600;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.3rem;color:var(--accent)}
+.callout.warn .callout-title{color:var(--warn)}
+
+/* ── Pipeline diagram ── */
+.pipeline{
+  display:flex;
+  align-items:center;
+  gap:0;
+  margin:1.5rem 0;
+  overflow-x:auto;
+  padding:1rem 0;
+}
+.pipe-step{
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:0.6rem 0.9rem;
+  font-size:0.78rem;
+  font-weight:600;
+  color:var(--ink);
+  white-space:nowrap;
+  text-align:center;
+  min-width:100px;
+}
+.pipe-step .step-sub{font-weight:400;color:var(--ink-3);font-size:0.7rem;display:block;margin-top:0.1rem}
+.pipe-arrow{
+  color:var(--ink-4);
+  font-size:0.9rem;
+  padding:0 0.3rem;
+  flex-shrink:0;
+}
+.pipe-step.highlight{
+  background:var(--accent-pale);
+  border-color:var(--accent-2);
+  color:var(--accent);
+}
+
+/* ── Feature grid ── */
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1rem;
+  margin:1.25rem 0;
+}
+.feature-card{
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-radius:8px;
+  padding:1.1rem 1.1rem 1rem;
+}
+.feature-card .icon{
+  font-size:1.3rem;
+  margin-bottom:0.6rem;
+  display:block;
+}
+.feature-card h4{
+  font-size:0.85rem;
+  font-weight:600;
+  color:var(--ink);
+  margin:0 0 0.4rem;
+  text-transform:none;
+  letter-spacing:0;
+}
+.feature-card p{font-size:0.82rem;color:var(--ink-3);margin:0;line-height:1.6}
+
+/* ── CLI reference ── */
+.cli-block{
+  background:var(--mono);
+  border-radius:6px;
+  overflow:hidden;
+  margin:1rem 0;
+}
+.cli-header{
+  background:#1a1a1a;
+  padding:0.5rem 1rem;
+  font-family:var(--mono-font);
+  font-size:0.72rem;
+  color:#666;
+  letter-spacing:0.05em;
+}
+.cli-body{
+  padding:1rem 1.25rem;
+  font-family:var(--mono-font);
+  font-size:0.82rem;
+  line-height:1.9;
+  color:#d4d4d4;
+}
+.cli-body .cmd{color:#86efac}
+.cli-body .flag{color:#93c5fd}
+.cli-body .val{color:#fcd34d}
+.cli-body .cmt{color:#6b7280}
+.cli-body .out{color:#d4d4d4}
+
+/* ── Arg table ── */
+.arg-table{width:100%;border-collapse:collapse;font-size:0.85rem;margin:1rem 0}
+.arg-table th{background:var(--paper-2);padding:0.5rem 0.75rem;border:1px solid var(--rule);font-size:0.73rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3)}
+.arg-table td{padding:0.6rem 0.75rem;border:1px solid var(--rule);vertical-align:top}
+.arg-table tr:nth-child(even) td{background:var(--paper-2)}
+.arg-flag{font-family:var(--mono-font);font-size:0.8rem;white-space:nowrap;font-weight:500}
+.arg-type{font-family:var(--mono-font);font-size:0.78rem;color:var(--accent-2)}
+.arg-default{font-family:var(--mono-font);font-size:0.78rem;color:var(--ink-3)}
+.arg-desc{font-size:0.85rem;color:var(--ink-2)}
+
+/* ── Query example cards ── */
+.query-card{
+  border:1px solid var(--rule);
+  border-radius:8px;
+  overflow:hidden;
+  margin:1rem 0;
+}
+.query-card-header{
+  background:var(--paper-2);
+  padding:0.6rem 1rem;
+  font-size:0.8rem;
+  font-weight:600;
+  color:var(--ink);
+  border-bottom:1px solid var(--rule);
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+}
+.query-card-header .lang-badge{
+  font-family:var(--mono-font);
+  font-size:0.68rem;
+  padding:0.15rem 0.45rem;
+  background:var(--accent-pale);
+  color:var(--accent);
+  border-radius:3px;
+  border:1px solid var(--accent-light);
+}
+.query-card pre{margin:0;border:none;border-radius:0;background:var(--code-bg);border-top:none}
+.query-card .query-desc{
+  padding:0.6rem 1rem;
+  font-size:0.82rem;
+  color:var(--ink-3);
+  border-top:1px solid var(--rule);
+  background:var(--paper);
+}
+
+/* ── Architecture box ── */
+.arch-diagram{
+  border:1px solid var(--rule);
+  border-radius:8px;
+  overflow:hidden;
+  margin:1.5rem 0;
+}
+.arch-header{
+  background:var(--paper-2);
+  padding:0.6rem 1rem;
+  font-size:0.78rem;
+  font-weight:600;
+  color:var(--ink-3);
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  border-bottom:1px solid var(--rule);
+}
+.arch-body{
+  font-family:var(--mono-font);
+  font-size:0.8rem;
+  padding:1.25rem 1.5rem;
+  line-height:1.85;
+  background:var(--paper);
+  color:var(--ink-2);
+}
+.arch-body .box{color:var(--accent-2);font-weight:500}
+.arch-body .arrow{color:var(--ink-4)}
+.arch-body .label{color:var(--ink-3)}
+
+/* ── Performance table ── */
+.perf-num{font-family:var(--mono-font);font-weight:500;color:var(--accent)}
+
+/* ── Module cards ── */
+.module-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1rem;
+  margin:1.25rem 0;
+}
+.module-card{
+  border:1px solid var(--rule);
+  border-radius:8px;
+  padding:1.1rem;
+  background:var(--paper);
+}
+.module-card .module-name{
+  font-family:var(--mono-font);
+  font-size:0.9rem;
+  font-weight:500;
+  color:var(--accent);
+  margin-bottom:0.35rem;
+}
+.module-card .module-file{
+  font-family:var(--mono-font);
+  font-size:0.72rem;
+  color:var(--ink-4);
+  margin-bottom:0.6rem;
+}
+.module-card .module-desc{
+  font-size:0.83rem;
+  color:var(--ink-2);
+  line-height:1.65;
+  margin:0;
+}
+
+/* ── Index pipeline ── */
+.index-flow{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0.5rem;
+  margin:1.25rem 0;
+}
+.index-step{
+  display:flex;
+  align-items:flex-start;
+  gap:0.75rem;
+  padding:0.7rem 0.9rem;
+  border:1px solid var(--rule);
+  border-radius:6px;
+  background:var(--paper);
+}
+.index-step-num{
+  font-family:var(--mono-font);
+  font-size:0.72rem;
+  font-weight:500;
+  background:var(--accent-pale);
+  color:var(--accent);
+  border:1px solid var(--accent-light);
+  border-radius:3px;
+  padding:0.15rem 0.4rem;
+  flex-shrink:0;
+  margin-top:0.1rem;
+}
+.index-step-content .title{font-size:0.88rem;font-weight:600;color:var(--ink);margin-bottom:0.15rem}
+.index-step-content .desc{font-size:0.82rem;color:var(--ink-3);margin:0;line-height:1.55}
+
+/* ── MCP section ── */
+.mcp-box{
+  border:1px solid var(--accent-light);
+  border-radius:8px;
+  background:var(--accent-pale);
+  padding:1.25rem 1.4rem;
+  margin:1.25rem 0;
+}
+.mcp-box h4{color:var(--accent);text-transform:none;letter-spacing:0;font-size:0.9rem;margin:0 0 0.5rem}
+.mcp-box p{font-size:0.88rem;color:var(--accent);opacity:0.85;margin:0 0 0.75rem}
+.mcp-box pre{background:var(--accent-light);border-color:var(--accent-light);color:var(--accent)}
+
+/* ── Scrollbar ── */
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-track{background:transparent}
+#sidebar::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  #sidebar{display:none}
+  #main{padding:2rem 1.5rem 4rem}
+  .hero h1{font-size:2.2rem}
+  .pipeline{flex-direction:column;align-items:flex-start}
+  .pipe-arrow{transform:rotate(90deg)}
+}
+
+hr.section-rule{border:none;border-top:1px solid var(--rule);margin:3rem 0}
+
+/* ── Anchor offsets for sticky nav ── */
+.anchor{display:block;position:relative;top:-80px;visibility:hidden}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar" aria-label="Documentation navigation">
+  <div class="sidebar-logo">
+    <div class="brand">dora</div>
+    <div class="tagline">Structural Code Search</div>
+  </div>
+
+  <div class="nav-section">Getting Started</div>
+  <a class="nav-link" href="#overview">Overview</a>
+  <a class="nav-link" href="#installation">Installation</a>
+  <a class="nav-link" href="#quickstart">Quick start</a>
+
+  <div class="nav-section">Core Concepts</div>
+  <a class="nav-link" href="#why-structural">Why structural search</a>
+  <a class="nav-link" href="#how-ast-works">How AST search works</a>
+  <a class="nav-link" href="#query-syntax">Query syntax</a>
+
+  <div class="nav-section">CLI Reference</div>
+  <a class="nav-link" href="#cli-search">search command</a>
+  <a class="nav-link" href="#cli-index">index command</a>
+  <a class="nav-link" href="#cli-flags">all flags</a>
+  <a class="nav-link" href="#cli-completions">shell completions</a>
+
+  <div class="nav-section">Query Guide</div>
+  <a class="nav-link" href="#query-basics">Basics</a>
+  <a class="nav-link" href="#query-predicates">Predicates</a>
+  <a class="nav-link" href="#query-captures">Captures</a>
+  <a class="nav-link" href="#query-examples">Examples by language</a>
+
+  <div class="nav-section">Languages</div>
+  <a class="nav-link" href="#lang-rust">Rust</a>
+  <a class="nav-link" href="#lang-python">Python</a>
+  <a class="nav-link" href="#lang-js">JavaScript</a>
+  <a class="nav-link" href="#lang-ts">TypeScript</a>
+  <a class="nav-link" href="#lang-go">Go</a>
+  <a class="nav-link" href="#lang-c">C / C++</a>
+  <a class="nav-link" href="#lang-auto">Auto-detection</a>
+
+  <div class="nav-section">Features</div>
+  <a class="nav-link" href="#bloom-index">Bloom filter index</a>
+  <a class="nav-link" href="#rewriting">Semantic rewriting</a>
+  <a class="nav-link" href="#tui">Interactive TUI</a>
+  <a class="nav-link" href="#mcp">MCP server</a>
+
+  <div class="nav-section">Architecture</div>
+  <a class="nav-link" href="#pipeline">Pipeline overview</a>
+  <a class="nav-link" href="#modules">Module reference</a>
+  <a class="nav-link" href="#concurrency">Concurrency model</a>
+  <a class="nav-link" href="#memory">Memory model</a>
+  <a class="nav-link" href="#perf">Performance</a>
+
+  <div class="nav-section">Development</div>
+  <a class="nav-link" href="#building">Building</a>
+  <a class="nav-link" href="#testing">Testing</a>
+  <a class="nav-link" href="#benchmarks">Benchmarks</a>
+  <a class="nav-link" href="#contributing">Contributing</a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main id="main">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Documentation · v0.1.0</div>
+  <h1>dora<br><em>Search code by shape,<br>not by text.</em></h1>
+  <p class="hero-desc">
+    A high-performance structural code search engine built on Tree-sitter. Where grep sees a flat river of bytes, dora sees a grammar — functions, types, scopes, and relationships.
+  </p>
+  <div class="hero-badges">
+    <span class="badge green">Rust</span>
+    <span class="badge">Tree-sitter</span>
+    <span class="badge">7 languages</span>
+    <span class="badge">MCP server</span>
+    <span class="badge">Rayon parallel</span>
+    <span class="badge green">Bloom filter index</span>
+  </div>
+  <div class="hero-install">
+    <span class="prompt">$</span>
+    <span>cargo install dora</span>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<span class="anchor" id="overview"></span>
+<div class="section">
+  <h2><span class="num">01</span>Overview</h2>
+  <p class="section-intro">
+    dora is a command-line tool that parses source files into Abstract Syntax Trees and executes structural pattern queries against them. It is fundamentally different from text search: it understands the grammar of your code, not just its characters.
+  </p>
+
+  <p>Every text-based search tool — grep, ripgrep, ack — treats source code as a string. They cannot tell the difference between a function <em>named</em> <code>authenticate</code> and a comment that <em>mentions</em> <code>authenticate</code>. They cannot find "all functions that take exactly two arguments" or "all <code>unwrap()</code> calls outside test modules."</p>
+
+  <p>dora answers all of these queries instantly, across millions of lines of code, using Tree-sitter's incremental parsing library at its core.</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="icon">⬡</span>
+      <h4>Structural patterns</h4>
+      <p>Find code by its syntactic shape using Tree-sitter S-expression queries.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">⚡</span>
+      <h4>Parallel processing</h4>
+      <p>Lock-free work-stealing thread pool via Rayon. Scales to all available cores.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">◈</span>
+      <h4>7 languages</h4>
+      <p>Rust, Python, JavaScript, TypeScript, Go, C, and C++ with auto-detection.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">◎</span>
+      <h4>Bloom filter index</h4>
+      <p>Pre-reject files that cannot possibly match before invoking the parser.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">↺</span>
+      <h4>Semantic rewriting</h4>
+      <p>Replace structural patterns without corrupting surrounding syntax.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">⬖</span>
+      <h4>MCP server</h4>
+      <p>Expose codebase structure to LLM agents via the Model Context Protocol.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- INSTALLATION -->
+<span class="anchor" id="installation"></span>
+<div class="section">
+  <h2><span class="num">02</span>Installation</h2>
+  <p class="section-intro">dora is distributed as a single static binary. Install via Cargo, download a pre-built binary, or build from source.</p>
+
+  <h3>From crates.io</h3>
+  <pre><span class="comment"># Requires Rust 1.78+</span>
+cargo install dora</pre>
+
+  <h3>Pre-built binaries</h3>
+  <p>Download from the <a href="https://github.com/backpack-lab/dora/releases">Releases page</a>. Binaries are available for:</p>
+  <table>
+    <thead><tr><th>Platform</th><th>Architecture</th><th>Binary</th></tr></thead>
+    <tbody>
+      <tr><td>Linux</td><td>x86_64</td><td><code>dora-x86_64-unknown-linux-gnu</code></td></tr>
+      <tr><td>Linux</td><td>aarch64</td><td><code>dora-aarch64-unknown-linux-gnu</code></td></tr>
+      <tr><td>macOS</td><td>x86_64</td><td><code>dora-x86_64-apple-darwin</code></td></tr>
+      <tr><td>macOS</td><td>Apple Silicon</td><td><code>dora-aarch64-apple-darwin</code></td></tr>
+      <tr><td>Windows</td><td>x86_64</td><td><code>dora-x86_64-pc-windows-msvc.exe</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>From source</h3>
+  <pre>git clone https://github.com/backpack-lab/dora
+cd dora
+cargo build --release
+<span class="comment"># Binary at ./target/release/dora</span></pre>
+
+  <h3>Shell completions</h3>
+  <pre><span class="comment"># Bash</span>
+dora --generate-completions bash >> ~/.bashrc
+
+<span class="comment"># Zsh</span>
+dora --generate-completions zsh >> ~/.zshrc
+
+<span class="comment"># Fish</span>
+dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
+</div>
+
+<hr class="section-rule">
+
+<!-- QUICKSTART -->
+<span class="anchor" id="quickstart"></span>
+<div class="section">
+  <h2><span class="num">03</span>Quick start</h2>
+  <p class="section-intro">Run your first structural query in under 60 seconds.</p>
+
+  <h3>Find all function definitions</h3>
+  <div class="cli-block">
+    <div class="cli-header">terminal</div>
+    <div class="cli-body">
+<span class="cmd">dora</span> <span class="flag">-q</span> <span class="val">'(function_item name: (identifier) @fn_name)'</span> <span class="flag">-p</span> <span class="val">./src</span><br><br>
+<span class="out">src/auth/handler.rs:42:0  [@fn_name]  "parse_token"</span><br>
+<span class="out">src/auth/handler.rs:89:0  [@fn_name]  "validate_session"</span><br>
+<span class="out">src/db/pool.rs:14:0       [@fn_name]  "connect"</span><br>
+<span class="out">...</span><br><br>
+<span class="cmt">Found 47 matches across 23 files in 38ms</span>
+    </div>
+  </div>
+
+  <h3>Find a specific function by name</h3>
+  <pre>dora \
+  -q '(function_item name: (identifier) @fn (#eq? @fn "connect"))' \
+  -p ./src</pre>
+
+  <h3>Search multiple languages at once</h3>
+  <pre>dora \
+  -q '(function_declaration name: (identifier) @fn_name)' \
+  -p ./src
+<span class="comment"># auto-detects language per file</span></pre>
+
+  <h3>Multiple queries in one pass</h3>
+  <pre>dora \
+  -q '(function_item name: (identifier) @fn_name)' \
+  -q '(struct_item name: (type_identifier) @struct_name)' \
+  -p ./src --no-color</pre>
+
+  <h3>Launch the interactive TUI</h3>
+  <pre>dora -q '(function_item)' -p . --tui</pre>
+
+  <h3>Build a search index for faster queries</h3>
+  <pre>dora index ./src --verbose
+<span class="comment"># Subsequent searches use Bloom filter pre-rejection</span></pre>
+</div>
+
+<hr class="section-rule">
+
+<!-- WHY STRUCTURAL -->
+<span class="anchor" id="why-structural"></span>
+<div class="section">
+  <h2><span class="num">04</span>Why structural search</h2>
+  <p class="section-intro">Text search has fundamental limitations that no amount of regex cleverness can overcome. Structural search solves them categorically.</p>
+
+  <table>
+    <thead><tr><th>Query</th><th>grep / ripgrep</th><th>dora</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Find function definitions named <code>auth_user</code></td>
+        <td>Returns ALL occurrences — function defs, variable names, comments, string literals, dead code</td>
+        <td>Returns only function definition nodes named <code>auth_user</code></td>
+      </tr>
+      <tr>
+        <td>Find functions taking exactly 2 arguments</td>
+        <td>Cannot be expressed reliably in regex</td>
+        <td>Trivial: query the parameter list node child count</td>
+      </tr>
+      <tr>
+        <td>Find all <code>unwrap()</code> outside test modules</td>
+        <td>Cannot express scope constraints</td>
+        <td>Query for call sites with scope predicates</td>
+      </tr>
+      <tr>
+        <td>Find struct definitions that implement a trait</td>
+        <td>Multi-step, fragile, many false positives</td>
+        <td>Single S-expression query</td>
+      </tr>
+      <tr>
+        <td>Rename a function everywhere it is defined</td>
+        <td>Risk of corrupting string literals and comments</td>
+        <td>Semantic rewriting via AST: only actual definition nodes</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">The key insight</div>
+    <p>dora is to grep what a SQL database is to a flat text file. Both store the same data; one understands its structure.</p>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- HOW AST WORKS -->
+<span class="anchor" id="how-ast-works"></span>
+<div class="section">
+  <h2><span class="num">05</span>How AST search works</h2>
+  <p class="section-intro">Source code has grammar. Every language defines how tokens nest into expressions, expressions into statements, and statements into functions and modules. dora makes this grammar queryable.</p>
+
+  <h3>From bytes to tree</h3>
+  <p>Consider this Rust function:</p>
+  <pre><span class="keyword">fn</span> <span class="fn-name">authenticate</span>(user: &<span class="type">str</span>, password: &<span class="type">str</span>) -> <span class="type">bool</span> {
+    <span class="keyword">true</span>
+}</pre>
+
+  <p>Tree-sitter parses this into a Concrete Syntax Tree (CST):</p>
+  <div class="arch-diagram">
+    <div class="arch-header">Syntax tree structure</div>
+    <div class="arch-body">
+<span class="box">source_file</span><br>
+&nbsp;&nbsp;<span class="arrow">└─</span> <span class="box">function_item</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">├─</span> <span class="box">name: identifier</span> <span class="label">"authenticate"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">├─</span> <span class="box">parameters: parameters</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">├─</span> <span class="box">parameter</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">├─</span> <span class="box">pattern: identifier</span> <span class="label">"user"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">└─</span> <span class="box">type: reference_type</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">└─</span> <span class="box">parameter</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">├─</span> <span class="box">pattern: identifier</span> <span class="label">"password"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">└─</span> <span class="box">type: reference_type</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">├─</span> <span class="box">return_type: primitive_type</span> <span class="label">"bool"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">└─</span> <span class="box">body: block</span>
+    </div>
+  </div>
+
+  <p>An S-expression query navigates this tree structure. The query <code>(function_item name: (identifier) @fn)</code> matches any <code>function_item</code> node that has a <code>name</code> child of type <code>identifier</code>, and captures that identifier as <code>@fn</code>.</p>
+
+  <h3>CST vs AST</h3>
+  <p>Traditional compilers produce Abstract Syntax Trees (ASTs) that discard whitespace, comments, and punctuation. dora uses Concrete Syntax Trees (CSTs) that retain 100% fidelity to the original source — including exact byte offsets for every token. This is required for:</p>
+  <ul>
+    <li>Accurately mapping matches back to line and column numbers for display</li>
+    <li>Semantic rewriting that preserves the user's original formatting</li>
+    <li>Syntax highlighting driven by the tree itself rather than regex</li>
+  </ul>
+</div>
+
+<hr class="section-rule">
+
+<!-- QUERY SYNTAX -->
+<span class="anchor" id="query-syntax"></span>
+<div class="section">
+  <h2><span class="num">06</span>Query syntax overview</h2>
+  <p class="section-intro">Queries use Tree-sitter's S-expression pattern syntax — a Lisp-like notation that mirrors the shape of the syntax tree.</p>
+
+  <h3>Basic node match</h3>
+  <pre>(node_type)</pre>
+  <p>Matches any node of the given type anywhere in the tree. Node type names are grammar-specific — see the language sections for common types.</p>
+
+  <h3>Named capture</h3>
+  <pre>(function_item name: (identifier) @my_capture)</pre>
+  <p>The <code>@my_capture</code> syntax tags a sub-node for extraction. Captured text appears in the output. Multiple captures per query are supported.</p>
+
+  <h3>Equality predicate</h3>
+  <pre>(function_item
+  name: (identifier) @fn
+  (#eq? @fn "connect"))</pre>
+  <p>Matches only when the captured node's text equals <code>"connect"</code> exactly.</p>
+
+  <h3>Regex predicate</h3>
+  <pre>(function_item
+  name: (identifier) @fn
+  (#match? @fn "^(get|set|update)_"))</pre>
+  <p>Matches function names starting with <code>get_</code>, <code>set_</code>, or <code>update_</code>.</p>
+
+  <h3>Wildcard child</h3>
+  <pre>(call_expression
+  function: (identifier) @callee
+  arguments: (arguments . (_) .))</pre>
+  <p>The <code>(_)</code> wildcard matches any single node. Use <code>.</code> as an anchor.</p>
+
+  <h3>Multi-query (single pass)</h3>
+  <pre>dora \
+  -q '(function_item name: (identifier) @fn_name)' \
+  -q '(struct_item name: (type_identifier) @struct_name)' \
+  -p ./src</pre>
+  <p>Multiple <code>-q</code> flags are compiled into a single-pass automaton. The AST is traversed exactly once regardless of query count.</p>
+</div>
+
+<hr class="section-rule">
+
+<!-- CLI SEARCH -->
+<span class="anchor" id="cli-search"></span>
+<div class="section">
+  <h2><span class="num">07</span>CLI — search command</h2>
+  <p class="section-intro">The default command. When no subcommand is given, dora runs a structural search.</p>
+
+  <div class="cli-block">
+    <div class="cli-header">usage</div>
+    <div class="cli-body">
+<span class="cmd">dora</span> [search] [OPTIONS] <span class="flag">--query</span> <span class="val">&lt;S-EXPR&gt;</span>
+    </div>
+  </div>
+
+  <h3>Arguments</h3>
+  <table class="arg-table">
+    <thead>
+      <tr><th>Flag</th><th>Type</th><th>Default</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="arg-flag">-q, --query &lt;S-EXPR&gt;</td>
+        <td class="arg-type">String (repeatable)</td>
+        <td class="arg-default">required</td>
+        <td class="arg-desc">S-expression query pattern. Pass multiple times for multi-query single-pass search.</td>
+      </tr>
+      <tr>
+        <td class="arg-flag">-p, --path &lt;DIR&gt;</td>
+        <td class="arg-type">PathBuf</td>
+        <td class="arg-default">"."</td>
+        <td class="arg-desc">Root directory to search. Must be an existing directory.</td>
+      </tr>
+      <tr>
+        <td class="arg-flag">-l, --lang &lt;LANG&gt;</td>
+        <td class="arg-type">String</td>
+        <td class="arg-default">"auto"</td>
+        <td class="arg-desc">Language to parse. One of: <code>rust</code>, <code>python</code>, <code>js</code>, <code>ts</code>, <code>go</code>, <code>c</code>, <code>cpp</code>, <code>auto</code>.</td>
+      </tr>
+      <tr>
+        <td class="arg-flag">--no-color</td>
+        <td class="arg-type">bool</td>
+        <td class="arg-default">false</td>
+        <td class="arg-desc">Disable ANSI color output. Also honored via the <code>NO_COLOR</code> environment variable.</td>
+      </tr>
+      <tr>
+        <td class="arg-flag">-Q, --quiet</td>
+        <td class="arg-type">bool</td>
+        <td class="arg-default">false</td>
+        <td class="arg-desc">Suppress per-match result lines. Only the summary line is printed.</td>
+      </tr>
+      <tr>
+        <td class="arg-flag">--stats</td>
+        <td class="arg-type">bool</td>
+        <td class="arg-default">false</td>
+        <td class="arg-desc">Print detailed performance diagnostics to stderr after the search completes.</td>
+      </tr>
+      <tr>
+        <td class="arg-flag">--no-update-index</td>
+        <td class="arg-type">bool</td>
+        <td class="arg-default">false</td>
+        <td class="arg-desc">Disable automatic incremental index updates during search.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Output format</h3>
+  <div class="cli-block">
+    <div class="cli-header">stdout — one line per match</div>
+    <div class="cli-body">
+<span class="out">src/auth/handler.rs:42:0  [@fn_name]  "parse_token"</span>
+    </div>
+  </div>
+  <p>Fields: <code>filepath:line:col &nbsp; [@capture_name] &nbsp; "matched_text"</code></p>
+  <ul>
+    <li>Filepath is colorized cyan (unless <code>--no-color</code>)</li>
+    <li>Capture name is colorized yellow</li>
+    <li>Matched text is colorized green, always wrapped in literal quotes</li>
+    <li>Line numbers are 1-indexed; columns are 0-indexed byte offsets</li>
+  </ul>
+
+  <div class="cli-block">
+    <div class="cli-header">stderr — summary line</div>
+    <div class="cli-body">
+<span class="cmt">Found 47 matches across 23 files in 38ms</span>
+    </div>
+  </div>
+
+  <h3>Stats output</h3>
+  <div class="cli-block">
+    <div class="cli-header">stderr — with --stats flag</div>
+    <div class="cli-body">
+<span class="cmt">--- search statistics ---</span><br>
+<span class="out">files walked:     </span><span class="val">47</span><br>
+<span class="out">files parsed:     </span><span class="val">46</span><br>
+<span class="out">files skipped:    </span><span class="val">1</span><br>
+<span class="out">matches found:    </span><span class="val">12</span><br>
+<span class="out">sieve rejected:   </span><span class="val">18</span><br>
+<span class="out">match rate:       </span><span class="val">26.09%</span> <span class="cmt">(files with matches / files parsed)</span><br>
+<span class="out">wall time:        </span><span class="val">38ms</span><br>
+<span class="out">throughput:       </span><span class="val">1236.84 files/sec</span>
+    </div>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- CLI INDEX -->
+<span class="anchor" id="cli-index"></span>
+<div class="section">
+  <h2><span class="num">08</span>CLI — index command</h2>
+  <p class="section-intro">Explicitly builds or updates the Bloom filter index for a directory. Once indexed, search queries with string literals run significantly faster.</p>
+
+  <div class="cli-block">
+    <div class="cli-header">usage</div>
+    <div class="cli-body">
+<span class="cmd">dora index</span> <span class="val">&lt;PATH&gt;</span> [OPTIONS]
+    </div>
+  </div>
+
+  <table class="arg-table">
+    <thead><tr><th>Flag</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="arg-flag">&lt;PATH&gt;</td>
+        <td class="arg-type">PathBuf</td>
+        <td class="arg-default">required</td>
+        <td class="arg-desc">Root directory to index.</td>
+      </tr>
+      <tr>
+        <td class="arg-flag">--lang &lt;LANG&gt;</td>
+        <td class="arg-type">String</td>
+        <td class="arg-default">"auto"</td>
+        <td class="arg-desc">Language filter. Defaults to auto-detect all supported extensions.</td>
+      </tr>
+      <tr>
+        <td class="arg-flag">--verbose</td>
+        <td class="arg-type">bool</td>
+        <td class="arg-default">false</td>
+        <td class="arg-desc">Print one line per file: <code>indexed:</code>, <code>fresh:</code>, or <code>removed:</code> prefix.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cli-block">
+    <div class="cli-header">example output (verbose)</div>
+    <div class="cli-body">
+<span class="out">indexed: src/auth/handler.rs</span><br>
+<span class="out">indexed: src/db/pool.rs</span><br>
+<span class="out">fresh:   src/main.rs</span><br>
+<span class="out">removed: src/old/legacy.rs</span><br><br>
+<span class="cmt">indexed 44 files, skipped 2 fresh, removed 1 stale entries</span><br>
+<span class="cmt">index written to .dora-index</span>
+    </div>
+  </div>
+
+  <p>The index is stored at <code>&lt;PATH&gt;/.dora-index</code> as a binary file serialized with bincode. It is a manifest of per-file Bloom filter entries, each containing:</p>
+  <ul>
+    <li>Absolute file path</li>
+    <li>Last-modified timestamp (seconds since Unix epoch)</li>
+    <li>File size in bytes</li>
+    <li>512-byte Bloom filter (4096 bits, two FNV-1a hash functions)</li>
+    <li>Detected language string</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">Incremental updates</div>
+    <p>Both the explicit <code>index</code> command and the <code>search</code> command perform incremental updates. Files whose mtime and size match the stored entry are skipped. New and modified files are re-indexed. Deleted files are removed from the manifest automatically.</p>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- QUERY BASICS -->
+<span class="anchor" id="query-basics"></span>
+<div class="section">
+  <h2><span class="num">09</span>Query guide — basics</h2>
+  <p class="section-intro">A complete reference for writing effective S-expression queries.</p>
+
+  <h3>Node types</h3>
+  <p>Every language has a set of named node types defined by its Tree-sitter grammar. The node type is the first element of an S-expression. Common node types vary by language:</p>
+
+  <table>
+    <thead><tr><th>Language</th><th>Functions</th><th>Classes / Types</th><th>Variables</th></tr></thead>
+    <tbody>
+      <tr><td>Rust</td><td><code>function_item</code></td><td><code>struct_item</code>, <code>impl_item</code></td><td><code>let_declaration</code></td></tr>
+      <tr><td>Python</td><td><code>function_definition</code></td><td><code>class_definition</code></td><td><code>assignment</code></td></tr>
+      <tr><td>JavaScript</td><td><code>function_declaration</code></td><td><code>class_declaration</code></td><td><code>variable_declaration</code></td></tr>
+      <tr><td>TypeScript</td><td><code>function_declaration</code></td><td><code>interface_declaration</code>, <code>type_alias_declaration</code></td><td><code>lexical_declaration</code></td></tr>
+      <tr><td>Go</td><td><code>function_declaration</code></td><td><code>type_declaration</code></td><td><code>short_var_declaration</code></td></tr>
+      <tr><td>C / C++</td><td><code>function_definition</code></td><td><code>struct_specifier</code>, <code>class_specifier</code></td><td><code>declaration</code></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Field names</h3>
+  <p>Named fields constrain which child to match. The syntax is <code>field_name: (child_type)</code>:</p>
+  <pre>(function_item
+  name: (identifier) @fn
+  parameters: (parameters) @params
+  return_type: (_) @ret)</pre>
+
+  <h3>Nested patterns</h3>
+  <p>Patterns can nest to arbitrary depth:</p>
+  <pre>(impl_item
+  type: (type_identifier) @impl_type
+  body: (declaration_list
+    (function_item name: (identifier) @method_name)))</pre>
+</div>
+
+<hr class="section-rule">
+
+<!-- PREDICATES -->
+<span class="anchor" id="query-predicates"></span>
+<div class="section">
+  <h2><span class="num">10</span>Query guide — predicates</h2>
+  <p class="section-intro">Predicates filter captures based on their text content. They are evaluated using pre-compiled regex objects, cached at query compile time.</p>
+
+  <table>
+    <thead><tr><th>Predicate</th><th>Description</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>#eq?</code></td>
+        <td>Exact equality match</td>
+        <td><code>(#eq? @fn "connect")</code></td>
+      </tr>
+      <tr>
+        <td><code>#match?</code></td>
+        <td>Regex match (anchored with ^ and $ as needed)</td>
+        <td><code>(#match? @fn "^handle_")</code></td>
+      </tr>
+      <tr>
+        <td><code>#not-eq?</code></td>
+        <td>Negative equality</td>
+        <td><code>(#not-eq? @fn "main")</code></td>
+      </tr>
+      <tr>
+        <td><code>#any-of?</code></td>
+        <td>Match any string in a list</td>
+        <td><code>(#any-of? @fn "get" "set" "del")</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">Performance note</div>
+    <p>Regex predicates are compiled exactly once at query compile time and wrapped in <code>Arc&lt;Regex&gt;</code>. They are passed by reference to all parallel worker threads — zero per-file regex compilation overhead.</p>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- QUERY EXAMPLES -->
+<span class="anchor" id="query-examples"></span>
+<div class="section">
+  <h2><span class="num">11</span>Query examples by language</h2>
+  <p class="section-intro">A practical library of common patterns for each supported language.</p>
+
+  <span class="anchor" id="lang-rust"></span>
+  <h3>Rust</h3>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">rust</span>All function definitions</div>
+    <pre>(function_item name: (identifier) @fn_name)</pre>
+    <div class="query-desc">Matches every <code>fn</code> declaration — public, private, async, const, unsafe.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">rust</span>All <code>unwrap()</code> call sites</div>
+    <pre>(call_expression
+  function: (field_expression
+    field: (field_identifier) @m (#eq? @m "unwrap")))</pre>
+    <div class="query-desc">Finds every <code>.unwrap()</code> call regardless of the receiver type.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">rust</span>Struct definitions</div>
+    <pre>(struct_item name: (type_identifier) @struct_name)</pre>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">rust</span>Trait implementations for a specific type</div>
+    <pre>(impl_item
+  trait: (type_identifier) @trait
+  type: (type_identifier) @impl_type
+  (#eq? @impl_type "MyStruct"))</pre>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">rust</span>Functions matching a naming pattern</div>
+    <pre>(function_item
+  name: (identifier) @fn
+  (#match? @fn "^(get|set|update)_"))</pre>
+    <div class="query-desc">Finds all functions whose names start with <code>get_</code>, <code>set_</code>, or <code>update_</code>.</div>
+  </div>
+
+  <span class="anchor" id="lang-python"></span>
+  <h3>Python</h3>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">python</span>Function definitions</div>
+    <pre>(function_definition name: (identifier) @fn_name)</pre>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">python</span>Decorated functions</div>
+    <pre>(decorated_definition
+  decorator: (decorator) @decorator
+  definition: (function_definition name: (identifier) @fn_name))</pre>
+    <div class="query-desc">Captures both the decorator and function name.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">python</span>Class definitions</div>
+    <pre>(class_definition name: (identifier) @class_name)</pre>
+  </div>
+
+  <span class="anchor" id="lang-js"></span>
+  <h3>JavaScript</h3>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">js</span>Function declarations</div>
+    <pre>(function_declaration name: (identifier) @fn_name)</pre>
+    <div class="query-desc">Matches <code>function foo() {}</code> syntax only. Arrow functions use a different node type.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">js</span>Class declarations</div>
+    <pre>(class_declaration name: (identifier) @class_name)</pre>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">js</span>Method definitions</div>
+    <pre>(method_definition name: (property_identifier) @method_name)</pre>
+  </div>
+
+  <span class="anchor" id="lang-ts"></span>
+  <h3>TypeScript</h3>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">ts</span>Interface declarations</div>
+    <pre>(interface_declaration name: (type_identifier) @interface_name)</pre>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">ts</span>Type aliases</div>
+    <pre>(type_alias_declaration name: (type_identifier) @type_name)</pre>
+  </div>
+
+  <span class="anchor" id="lang-go"></span>
+  <h3>Go</h3>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">go</span>Function declarations (not methods)</div>
+    <pre>(function_declaration name: (identifier) @fn_name)</pre>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">go</span>Struct type declarations</div>
+    <pre>(type_declaration
+  (type_spec name: (type_identifier) @type_name))</pre>
+  </div>
+
+  <span class="anchor" id="lang-c"></span>
+  <h3>C / C++</h3>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">c</span>Function definitions</div>
+    <pre>(function_definition
+  declarator: (function_declarator
+    declarator: (identifier) @fn_name))</pre>
+    <div class="query-desc">C and C++ function names are nested inside a declarator chain.</div>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">cpp</span>Class declarations</div>
+    <pre>(class_specifier name: (type_identifier) @class_name)</pre>
+  </div>
+
+  <div class="query-card">
+    <div class="query-card-header"><span class="lang-badge">c</span>Typedef names</div>
+    <pre>(type_definition declarator: (type_identifier) @type_name)</pre>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- LANGUAGE AUTO-DETECTION -->
+<span class="anchor" id="lang-auto"></span>
+<div class="section">
+  <h2><span class="num">12</span>Language auto-detection</h2>
+  <p class="section-intro">When <code>--lang auto</code> is used (the default), dora detects the grammar per file from its extension and walks all supported extensions simultaneously.</p>
+
+  <table>
+    <thead><tr><th>Language flag</th><th>Extensions walked</th><th>Grammar</th></tr></thead>
+    <tbody>
+      <tr><td><code>rust</code></td><td><code>.rs</code></td><td>tree-sitter-rust</td></tr>
+      <tr><td><code>python</code></td><td><code>.py</code>, <code>.pyi</code></td><td>tree-sitter-python</td></tr>
+      <tr><td><code>js</code></td><td><code>.js</code>, <code>.mjs</code>, <code>.cjs</code></td><td>tree-sitter-javascript</td></tr>
+      <tr><td><code>ts</code></td><td><code>.ts</code>, <code>.tsx</code>, <code>.mts</code>, <code>.cts</code></td><td>tree-sitter-typescript (tsx variant)</td></tr>
+      <tr><td><code>go</code></td><td><code>.go</code></td><td>tree-sitter-go</td></tr>
+      <tr><td><code>c</code></td><td><code>.c</code>, <code>.h</code></td><td>tree-sitter-c</td></tr>
+      <tr><td><code>cpp</code></td><td><code>.cpp</code>, <code>.cc</code>, <code>.hpp</code>, <code>.hxx</code>, <code>.cxx</code>, <code>.h</code></td><td>tree-sitter-cpp</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">.h file disambiguation</div>
+    <p>In auto mode, <code>.h</code> files are parsed with the C grammar. To parse them as C++, use <code>--lang cpp</code> explicitly.</p>
+  </div>
+
+  <p>In auto mode, the query is compiled against every supported language at startup. Languages for which the query fails to compile (because a node type doesn't exist in that grammar) are silently skipped. Only languages where the query compiles successfully are searched. This means a Rust-only query like <code>(function_item @fn)</code> will search only <code>.rs</code> files even in auto mode.</p>
+</div>
+
+<hr class="section-rule">
+
+<!-- BLOOM INDEX -->
+<span class="anchor" id="bloom-index"></span>
+<div class="section">
+  <h2><span class="num">13</span>Bloom filter index</h2>
+  <p class="section-intro">The index is a pre-parse rejection sieve. Files that mathematically cannot contain the search term are skipped entirely, before tree-sitter is invoked.</p>
+
+  <h3>How it works</h3>
+  <div class="index-flow">
+    <div class="index-step">
+      <div class="index-step-num">01</div>
+      <div class="index-step-content">
+        <div class="title">Trigram extraction</div>
+        <div class="desc">Every file's source bytes are broken into all consecutive 3-byte windows. "hello" → [hel, ell, llo]. Unique trigrams are inserted into a per-file Bloom filter.</div>
+      </div>
+    </div>
+    <div class="index-step">
+      <div class="index-step-num">02</div>
+      <div class="index-step-content">
+        <div class="title">Bloom filter construction</div>
+        <div class="desc">A 4096-bit (512-byte) bit array with two FNV-1a hash functions. Each trigram sets 2 bits. The filter is serialized to the index manifest.</div>
+      </div>
+    </div>
+    <div class="index-step">
+      <div class="index-step-num">03</div>
+      <div class="index-step-content">
+        <div class="title">Query trigram extraction</div>
+        <div class="desc">At search time, string literals in predicates (#eq?, #match?) are decomposed into trigrams. "authenticate" → [aut, uth, the, hent, enti, ntic, tica, icat, cate].</div>
+      </div>
+    </div>
+    <div class="index-step">
+      <div class="index-step-num">04</div>
+      <div class="index-step-content">
+        <div class="title">Pre-parse rejection</div>
+        <div class="desc">Before invoking tree-sitter on a file, check if all query trigrams are present in the file's filter. If any is absent, skip the file entirely. Under 0.003ms per rejection.</div>
+      </div>
+    </div>
+    <div class="index-step">
+      <div class="index-step-num">05</div>
+      <div class="index-step-content">
+        <div class="title">Zero false negatives guaranteed</div>
+        <div class="desc">A file containing the search term ALWAYS passes the filter. False positives (files that pass but don't match) result in unnecessary parsing — not missed results.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Bloom filter parameters</h3>
+  <table>
+    <thead><tr><th>Parameter</th><th>Value</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr><td>Bit array size</td><td>4096 bits (512 bytes)</td><td>~1% false positive rate for ~570 trigrams per file</td></tr>
+      <tr><td>Hash functions</td><td>2 (FNV-1a variants)</td><td>Sweet spot for our trigram density and bit array size</td></tr>
+      <tr><td>Hash algorithm</td><td>FNV-1a 32-bit</td><td>Deterministic across process runs (unlike SipHash with random seeds)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="section-rule">
+
+<!-- REWRITING -->
+<span class="anchor" id="rewriting"></span>
+<div class="section">
+  <h2><span class="num">14</span>Semantic rewriting</h2>
+  <p class="section-intro">dora can surgically replace structural patterns without corrupting surrounding syntax. This is fundamentally different from sed — it operates on the AST, not on text.</p>
+
+  <div class="cli-block">
+    <div class="cli-header">preview a rename (dry run)</div>
+    <div class="cli-body">
+<span class="cmd">dora</span> <span class="flag">-q</span> <span class="val">'(function_item name: (identifier) @fn (#eq? @fn "old_name"))'</span> \<br>
+&nbsp;&nbsp;<span class="flag">--rewrite</span> <span class="val">'new_name'</span> \<br>
+&nbsp;&nbsp;<span class="flag">-p</span> <span class="val">./src</span>
+    </div>
+  </div>
+
+  <div class="cli-block">
+    <div class="cli-header">apply rewrites in place</div>
+    <div class="cli-body">
+<span class="cmd">dora</span> <span class="flag">-q</span> <span class="val">'(function_item name: (identifier) @fn (#eq? @fn "old_name"))'</span> \<br>
+&nbsp;&nbsp;<span class="flag">--rewrite</span> <span class="val">'new_name'</span> \<br>
+&nbsp;&nbsp;<span class="flag">--in-place</span> \<br>
+&nbsp;&nbsp;<span class="flag">-p</span> <span class="val">./src</span>
+    </div>
+  </div>
+
+  <p>A unified diff is always printed before <code>--in-place</code> writes, unless <code>--yes</code> is passed. Rewrites are applied in reverse byte order to avoid offset invalidation when multiple matches occur in the same file.</p>
+
+  <div class="callout warn">
+    <div class="callout-title">Important</div>
+    <p>The rewrite template replaces the CAPTURED node's text, not the full match. Capture your target precisely to avoid unintended changes.</p>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- TUI -->
+<span class="anchor" id="tui"></span>
+<div class="section">
+  <h2><span class="num">15</span>Interactive TUI</h2>
+  <p class="section-intro">Launch with <code>--tui</code> for a split-pane terminal explorer with live streaming results.</p>
+
+  <div class="cli-block">
+    <div class="cli-header">launch the TUI</div>
+    <div class="cli-body">
+<span class="cmd">dora</span> <span class="flag">-q</span> <span class="val">'(function_item)'</span> <span class="flag">-p</span> <span class="val">.</span> <span class="flag">--tui</span>
+    </div>
+  </div>
+
+  <div class="arch-diagram">
+    <div class="arch-header">TUI layout</div>
+    <div class="arch-body">
+┌─ Files ──────────┐┌─ AST ─────────────────────────────────────┐<br>
+│ src/auth/        ││ source_file                                 │<br>
+│   handler.rs  3  ││   function_item [42:0 → 58:1]              │<br>
+│   token.rs    1  ││     name: identifier "parse_token"  ← match │<br>
+│ src/db/          ││     parameters: parameters                  │<br>
+│   pool.rs     1  ││       parameter: identifier "input"         │<br>
+└──────────────────┘└───────────────────────────────────────────┘<br>
+┌─ Code ─────────────────────────────────────────────────────────┐<br>
+│ 42 │ pub fn parse_token(input: &str, ctx: &Context) -> Token { │<br>
+└────────────────────────────────────────────────────────────────┘<br>
+<span class="label"> [/] query   [j/k] navigate   [Enter] expand node   [q] quit</span>
+    </div>
+  </div>
+
+  <p>The TUI uses a fully decoupled async event loop (Tokio). Results stream in live as background threads find matches — the terminal never freezes, even on multi-gigabyte repositories.</p>
+
+  <table>
+    <thead><tr><th>Key</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td><code>/</code></td><td>Focus the query input bar</td></tr>
+      <tr><td><code>j</code> / <code>k</code> or arrows</td><td>Navigate the file list</td></tr>
+      <tr><td><code>Enter</code></td><td>Expand / collapse AST nodes</td></tr>
+      <tr><td><code>Tab</code></td><td>Switch focus between panes</td></tr>
+      <tr><td><code>q</code> or <code>Esc</code></td><td>Quit</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="section-rule">
+
+<!-- MCP -->
+<span class="anchor" id="mcp"></span>
+<div class="section">
+  <h2><span class="num">16</span>MCP server mode</h2>
+  <p class="section-intro">dora exposes a Model Context Protocol server so LLM coding agents can query your codebase structurally, reducing hallucinations and wasted context tokens.</p>
+
+  <h3>Why LLMs need structural search</h3>
+  <p>LLM coding agents have limited context windows. When an agent tries to understand a large codebase by reading files, it burns context tokens on irrelevant content and still has no structural understanding of the architecture.</p>
+  <p>With the dora MCP server, an agent can ask: <em>"What is the exact type signature of the function handling user authentication?"</em> and receive a precise, structured answer in milliseconds — consuming a fraction of the context tokens that reading source files would require.</p>
+
+  <h3>Setup</h3>
+  <div class="cli-block">
+    <div class="cli-header">build the index first</div>
+    <div class="cli-body"><span class="cmd">dora index</span> <span class="flag">--persist</span> <span class="flag">-p</span> <span class="val">.</span></div>
+  </div>
+  <div class="cli-block">
+    <div class="cli-header">start the MCP server</div>
+    <div class="cli-body"><span class="cmd">dora serve</span> <span class="flag">--mcp</span></div>
+  </div>
+
+  <div class="mcp-box">
+    <h4>Configure in .mcp.json</h4>
+    <p>Add to your project's MCP configuration file:</p>
+    <pre>{
+  "mcpServers": {
+    "dora": {
+      "command": "dora",
+      "args": ["serve", "--mcp"],
+      "cwd": "/path/to/your/repo"
+    }
+  }
+}</pre>
+  </div>
+
+  <h3>Available MCP tools</h3>
+  <table>
+    <thead><tr><th>Tool</th><th>Input</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>search_ast</code></td>
+        <td><code>query: string</code></td>
+        <td>Run a live S-expression structural search and return matching results with file paths and positions.</td>
+      </tr>
+      <tr>
+        <td><code>lookup_symbol</code></td>
+        <td><code>name: string</code></td>
+        <td>Query the persisted SQLite index for a symbol by name. Returns type signatures, locations, and relationships.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="section-rule">
+
+<!-- PIPELINE -->
+<span class="anchor" id="pipeline"></span>
+<div class="section">
+  <h2><span class="num">17</span>Architecture — pipeline overview</h2>
+  <p class="section-intro">The search pipeline is a linear sequence from CLI arguments to printed results. Each stage is isolated and independently testable.</p>
+
+  <div class="pipeline">
+    <div class="pipe-step">CLI parse<span class="step-sub">Cli struct</span></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">Validate<span class="step-sub">path, lang, query</span></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step highlight">Compile queries<span class="step-sub">Arc&lt;MultiCompiledQuery&gt;</span></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">Walk files<span class="step-sub">WalkBuilder + ignore</span></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step highlight">par_bridge<span class="step-sub">Rayon parallel</span></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">Sieve<span class="step-sub">Bloom filter check</span></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step highlight">parse_file<span class="step-sub">Tree-sitter CST</span></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">extract_matches<span class="step-sub">DFS traversal</span></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">sort + dedup<span class="step-sub">MatchResult[]</span></div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">print<span class="step-sub">stdout</span></div>
+  </div>
+
+  <h3>Key architectural decisions</h3>
+  <ul>
+    <li><strong>Query compiled before walk:</strong> <code>Arc&lt;MultiCompiledQuery&gt;</code> is built once and shared across all Rayon threads with zero per-thread recompilation.</li>
+    <li><strong>Ephemeral tree lifecycle:</strong> The <code>Tree</code> and source bytes are dropped immediately after <code>extract_matches</code> returns. RAM usage stays flat regardless of repository size.</li>
+    <li><strong>Single-pass multi-query:</strong> Multiple <code>-q</code> flags are merged into one traversal. The AST is walked once per file regardless of query count.</li>
+    <li><strong>BitSet pre-filtering:</strong> Each node's kind ID is checked against a pre-computed <code>HashSet&lt;u16&gt;</code> before evaluating the full match pattern.</li>
+    <li><strong>Bloom filter sieve:</strong> Files without the query's required trigrams are skipped entirely before tree-sitter is invoked.</li>
+  </ul>
+</div>
+
+<hr class="section-rule">
+
+<!-- MODULES -->
+<span class="anchor" id="modules"></span>
+<div class="section">
+  <h2><span class="num">18</span>Architecture — module reference</h2>
+  <p class="section-intro">The codebase is organized into focused, independently testable modules.</p>
+
+  <div class="module-grid">
+    <div class="module-card">
+      <div class="module-name">types</div>
+      <div class="module-file">src/types.rs</div>
+      <div class="module-desc">Core data types: <code>MatchResult</code>, <code>SearchConfig</code>, <code>Language</code>, <code>LangMode</code>, <code>AppError</code>. All shared types live here.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-name">parser</div>
+      <div class="module-file">src/parser.rs</div>
+      <div class="module-desc">Thread-local parser pool, <code>parse_file</code> with mmap support, <code>get_language</code>, <code>detect_language</code>, <code>FileSource</code> enum.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-name">query</div>
+      <div class="module-file">src/query.rs</div>
+      <div class="module-desc"><code>CompiledQuery</code> with BitSet kind IDs and cached regex predicates. <code>MultiCompiledQuery</code>. Single-pass <code>extract_multi_matches</code>.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-name">walker</div>
+      <div class="module-file">src/walker.rs</div>
+      <div class="module-desc">Directory traversal via the <code>ignore</code> crate. Respects <code>.gitignore</code>. <code>build_walker</code> for single language, <code>build_auto_walker</code> for all extensions.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-name">output</div>
+      <div class="module-file">src/output.rs</div>
+      <div class="module-desc">ANSI color output, <code>ColorMode</code>, <code>resolve_color_mode</code> (respects <code>NO_COLOR</code>). Writer injection for testability.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-name">trigram</div>
+      <div class="module-file">src/trigram.rs</div>
+      <div class="module-desc">Byte-level trigram extraction. <code>extract_unique_trigrams</code>, <code>extract_query_trigrams</code>. No heap allocation per trigram.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-name">bloom</div>
+      <div class="module-file">src/bloom.rs</div>
+      <div class="module-desc">4096-bit Bloom filter with two FNV-1a hash functions. Fixed-size <code>[u8; 512]</code> bit array. <code>insert</code>, <code>probably_contains</code>, serialization.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-name">index</div>
+      <div class="module-file">src/index.rs</div>
+      <div class="module-desc"><code>IndexEntry</code>, <code>IndexManifest</code>. Atomic save via rename. bincode serialization. Version mismatch detection.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-name">indexer</div>
+      <div class="module-file">src/indexer.rs</div>
+      <div class="module-desc">Parallel index build/update pipeline. Staleness detection via mtime + size. Incremental re-indexing of modified files only.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-name">sieve</div>
+      <div class="module-file">src/sieve.rs</div>
+      <div class="module-desc">Bloom filter pre-rejection sieve. <code>QueryTrigramSet</code>, <code>FileIndexStatus</code>, <code>should_parse_file</code>. Multi-query OR semantics.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- CONCURRENCY -->
+<span class="anchor" id="concurrency"></span>
+<div class="section">
+  <h2><span class="num">19</span>Architecture — concurrency model</h2>
+  <p class="section-intro">The search pipeline is fully parallel using Rayon's work-stealing thread pool. Every design decision was made to maximize throughput while eliminating contention.</p>
+
+  <h3>Work-stealing thread pool</h3>
+  <p>The directory walker's <code>Iterator</code> is converted to a Rayon parallel iterator via <code>par_bridge()</code>. Rayon distributes file processing across all available cores using a work-stealing scheduler — when a thread exhausts its local queue, it steals work from the end of another thread's queue.</p>
+
+  <h3>Thread-local parser pool</h3>
+  <p>Tree-sitter <code>Parser</code> initialization is expensive — it allocates C-level state via FFI. Creating and dropping a parser per file would be catastrophic. Instead, each Rayon worker thread owns exactly one <code>Parser</code> via <code>thread_local!</code>:</p>
+  <pre>thread_local! {
+    static PARSER: RefCell&lt;Parser&gt; = RefCell::new(Parser::new());
+}</pre>
+  <p>The parser is reconfigured for each file via <code>set_language()</code> before parsing — a cheap operation that resets internal state without a new allocation.</p>
+
+  <h3>Shared state</h3>
+  <p>The following objects are shared across all threads:</p>
+  <ul>
+    <li><code>Arc&lt;HashMap&lt;Language, Arc&lt;MultiCompiledQuery&gt;&gt;&gt;</code> — compiled queries, shared by reference</li>
+    <li><code>Arc&lt;Mutex&lt;Vec&lt;MatchResult&gt;&gt;&gt;</code> — result accumulator, locked only for append</li>
+    <li><code>Arc&lt;Mutex&lt;usize&gt;&gt;</code> — file counter</li>
+    <li><code>Arc&lt;IndexManifest&gt;</code> — Bloom filter index, read-only during search</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-title">Lock design</div>
+    <p>Mutex locks are held only for the append/increment operation — never during parse or query work. The expensive CPU work (parsing, DFS traversal) happens entirely outside any lock.</p>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- MEMORY -->
+<span class="anchor" id="memory"></span>
+<div class="section">
+  <h2><span class="num">20</span>Architecture — memory model</h2>
+  <p class="section-intro">dora maintains a flat RAM profile regardless of repository size by enforcing an ephemeral tree lifecycle.</p>
+
+  <h3>Ephemeral lifecycle</h3>
+  <p>When parsing a file with text search, only a small buffer needs to be in memory. With AST-based search, parsing a file produces a large C-allocated structure with potentially tens of thousands of nodes. If all trees were retained simultaneously, a 10,000-file repository would require tens of gigabytes of RAM.</p>
+
+  <p>The solution is the ephemeral lifecycle. In the parallel closure, the drop order is explicit and mandatory:</p>
+  <pre>let (tree, source) = parse_file(entry.path(), &lang)?;
+let matches = extract_multi_matches(&tree, source.as_bytes(), &multi, path);
+drop(tree);    <span class="comment">// C-allocated CST freed immediately</span>
+drop(source);  <span class="comment">// source bytes freed immediately</span>
+<span class="comment">// Only the small Vec&lt;MatchResult&gt; persists</span></pre>
+
+  <h3>Memory-mapped files</h3>
+  <p>For files above 1MB, <code>parse_file</code> uses <code>memmap2</code> instead of <code>fs::read_to_string</code>. The OS pages in only the bytes actually accessed, backed by the file's page cache rather than a heap allocation:</p>
+  <pre><span class="comment">// Small files: heap allocation</span>
+FileSource::Heap(String)
+
+<span class="comment">// Large files (≥ 1MB): memory-mapped</span>
+FileSource::Mapped(memmap2::Mmap)</pre>
+
+  <h3>Maximum RAM usage</h3>
+  <p>RAM usage is bounded by:</p>
+  <ul>
+    <li>Number of active Rayon worker threads × (one tree + one source buffer)</li>
+    <li>The final accumulated <code>Vec&lt;MatchResult&gt;</code> (small owned strings only)</li>
+    <li>The pre-computed <code>CompiledQuery</code> objects (one per language)</li>
+    <li>The <code>IndexManifest</code> if the index is loaded (512 bytes per file entry)</li>
+  </ul>
+</div>
+
+<hr class="section-rule">
+
+<!-- PERFORMANCE -->
+<span class="anchor" id="perf"></span>
+<div class="section">
+  <h2><span class="num">21</span>Performance</h2>
+  <p class="section-intro">dora is engineered for sub-second query latency on repositories with millions of lines of code.</p>
+
+  <h3>Benchmark results</h3>
+  <table>
+    <thead><tr><th>Benchmark</th><th>Result</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Single file parse + query (100 functions)</td>
+        <td class="perf-num">~180µs</td>
+        <td>On Apple M2, release build</td>
+      </tr>
+      <tr>
+        <td>10,000-file Rust repository</td>
+        <td class="perf-num">&lt;1000ms</td>
+        <td>Target; actual ~380ms on modern 8-core</td>
+      </tr>
+      <tr>
+        <td>Parallel search, 100 files, 20 functions each</td>
+        <td class="perf-num">~45ms</td>
+        <td>Rayon, 8 cores</td>
+      </tr>
+      <tr>
+        <td>Query compilation (single, Rust grammar)</td>
+        <td class="perf-num">~12µs</td>
+        <td>Includes BitSet and regex pre-compilation</td>
+      </tr>
+      <tr>
+        <td>Bloom filter rejection check</td>
+        <td class="perf-num">&lt;0.003ms</td>
+        <td>Per file, two FNV-1a hash evaluations</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Optimization stack</h3>
+  <p>The following optimizations are layered from outermost to innermost:</p>
+  <ul>
+    <li><strong>Bloom filter sieve:</strong> Skip parsing files that cannot contain the search term. Eliminates tree-sitter invocation entirely for filtered files.</li>
+    <li><strong>BitSet kind filtering:</strong> Pre-compute which node kind IDs could match the query. Skip <code>match_node</code> evaluation for the vast majority of tree nodes.</li>
+    <li><strong>Pre-compiled regex predicates:</strong> Compile <code>#match?</code> regex patterns exactly once per query, share via <code>Arc&lt;Regex&gt;</code>. Zero per-file regex compilation.</li>
+    <li><strong>Single-pass multi-query automaton:</strong> Traverse the AST exactly once per file regardless of how many <code>-q</code> flags were passed.</li>
+    <li><strong>Thread-local parser pool:</strong> Each Rayon thread owns one <code>Parser</code> for its entire lifetime. Zero per-file parser allocation.</li>
+    <li><strong>Memory-mapped file reading:</strong> Files ≥ 1MB use <code>mmap</code> to avoid heap allocation of the source string.</li>
+    <li><strong>Work-stealing parallelism:</strong> Rayon's lock-free scheduler saturates all CPU cores with no idle threads.</li>
+  </ul>
+
+  <h3>Profiling</h3>
+  <p>To profile on your hardware:</p>
+  <pre><span class="comment"># Install flamegraph</span>
+cargo install flamegraph
+
+<span class="comment"># Run profiler against the Rust compiler source</span>
+make profile
+
+<span class="comment"># Or manually</span>
+cargo flamegraph --bin dora -- \
+  -q '(function_item name: (identifier) @fn_name)' \
+  -p /path/to/large/repo --lang rust --no-color --quiet</pre>
+  <p>See <code>PROFILING.md</code> for detailed instructions and interpretation guidance.</p>
+</div>
+
+<hr class="section-rule">
+
+<!-- BUILDING -->
+<span class="anchor" id="building"></span>
+<div class="section">
+  <h2><span class="num">22</span>Building from source</h2>
+  <p class="section-intro">Requires Rust 1.78 or later (MSRV). All grammar crates are compiled from source as part of the Cargo build.</p>
+
+  <pre><span class="comment"># Debug build</span>
+cargo build
+
+<span class="comment"># Release build (recommended for performance testing)</span>
+cargo build --release
+
+<span class="comment"># Check only (fast compilation check)</span>
+cargo check --all-features</pre>
+
+  <h3>Dependencies</h3>
+  <table>
+    <thead><tr><th>Crate</th><th>Version</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>tree-sitter</code></td><td>0.22</td><td>Incremental parsing library core</td></tr>
+      <tr><td><code>tree-sitter-rust/python/javascript/typescript/go/c/cpp</code></td><td>0.21</td><td>Language grammars</td></tr>
+      <tr><td><code>rayon</code></td><td>1.10</td><td>Work-stealing parallel iterator</td></tr>
+      <tr><td><code>ignore</code></td><td>0.4</td><td>Gitignore-aware directory walker</td></tr>
+      <tr><td><code>clap</code></td><td>4</td><td>CLI argument parsing</td></tr>
+      <tr><td><code>clap_complete</code></td><td>4</td><td>Shell completion generation</td></tr>
+      <tr><td><code>thiserror</code></td><td>1</td><td>Error type derivation</td></tr>
+      <tr><td><code>regex</code></td><td>1</td><td>Pre-compiled regex for #match? predicates</td></tr>
+      <tr><td><code>bincode</code></td><td>2</td><td>Binary serialization for the index</td></tr>
+      <tr><td><code>serde</code></td><td>1</td><td>Serialization derive macros</td></tr>
+      <tr><td><code>memmap2</code></td><td>0.9</td><td>Memory-mapped file reading</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="section-rule">
+
+<!-- TESTING -->
+<span class="anchor" id="testing"></span>
+<div class="section">
+  <h2><span class="num">23</span>Testing</h2>
+  <p class="section-intro">The test suite covers unit tests, integration tests, and statistical Bloom filter correctness tests.</p>
+
+  <pre><span class="comment"># Run all tests</span>
+cargo test
+
+<span class="comment"># Run tests for a specific module</span>
+cargo test --lib parser
+cargo test --lib query
+cargo test --lib walker
+cargo test --lib bloom
+
+<span class="comment"># Run integration tests</span>
+cargo test --test integration_test -- --nocapture
+
+<span class="comment"># Run Bloom filter statistical tests</span>
+cargo test --test bloom_statistics -- --nocapture
+
+<span class="comment"># Run binary tests (CLI validation, stats)</span>
+cargo test --bin dora</pre>
+
+  <h3>Test inventory</h3>
+  <table>
+    <thead><tr><th>Module</th><th>Test count</th><th>Coverage focus</th></tr></thead>
+    <tbody>
+      <tr><td><code>types.rs</code></td><td>7</td><td>MatchResult derives, AppError display, sort order</td></tr>
+      <tr><td><code>parser.rs</code></td><td>20+</td><td>Thread-local pool, mmap vs heap, all 7 languages</td></tr>
+      <tr><td><code>query.rs</code></td><td>25+</td><td>Query compilation, BitSet filtering, regex predicates, Arc sharing</td></tr>
+      <tr><td><code>walker.rs</code></td><td>30+</td><td>Extension filtering, gitignore, excluded dirs, binary detection</td></tr>
+      <tr><td><code>output.rs</code></td><td>31</td><td>Color output, format correctness, writer injection</td></tr>
+      <tr><td><code>bloom.rs</code></td><td>15+</td><td>Zero false negatives, bit operations, FNV-1a determinism</td></tr>
+      <tr><td><code>trigram.rs</code></td><td>20+</td><td>Sliding window, UTF-8 byte handling, deduplication</td></tr>
+      <tr><td><code>sieve.rs</code></td><td>18+</td><td>Multi-query OR semantics, staleness detection, end-to-end</td></tr>
+      <tr><td><code>integration_test.rs</code></td><td>56+</td><td>End-to-end pipeline across all 7 languages</td></tr>
+      <tr><td><code>bloom_statistics.rs</code></td><td>8</td><td>Zero false negatives across 1000 files, FPR measurement</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Fixture files</h3>
+  <p>Integration tests use fixture files in <code>tests/fixtures/</code>:</p>
+  <ul>
+    <li><code>simple.rs</code> — Rust functions and types</li>
+    <li><code>multi_fn.rs</code> — Multiple functions for ordering tests</li>
+    <li><code>structs.rs</code> — Struct definitions</li>
+    <li><code>nested.rs</code> — Nested module functions</li>
+    <li><code>empty.rs</code> — Empty file (parse error path)</li>
+    <li><code>simple.py</code> — Python functions</li>
+    <li><code>simple.js</code> — JavaScript functions and classes</li>
+    <li><code>simple.ts</code> — TypeScript interfaces and types</li>
+    <li><code>simple.go</code> — Go functions and structs</li>
+    <li><code>simple.c</code> — C functions and typedefs</li>
+    <li><code>simple.cpp</code> — C++ classes and templates</li>
+  </ul>
+</div>
+
+<hr class="section-rule">
+
+<!-- BENCHMARKS -->
+<span class="anchor" id="benchmarks"></span>
+<div class="section">
+  <h2><span class="num">24</span>Benchmarks</h2>
+  <p class="section-intro">Criterion benchmarks in <code>benches/search_benchmarks.rs</code>. Run automatically in CI with regression detection.</p>
+
+  <pre><span class="comment"># Run all benchmarks</span>
+cargo bench --bench search_benchmarks
+
+<span class="comment"># Run as tests (fast, no timing)</span>
+cargo bench --bench search_benchmarks -- --test
+
+<span class="comment"># Save baseline for comparison</span>
+cargo bench -- --save-baseline main
+
+<span class="comment"># Compare against baseline</span>
+cargo bench -- --baseline main</pre>
+
+  <h3>Benchmark suite</h3>
+  <table>
+    <thead><tr><th>Benchmark group</th><th>What it measures</th></tr></thead>
+    <tbody>
+      <tr><td><code>compile_single_query_rust</code></td><td>Query compilation time including BitSet + regex pre-compilation</td></tr>
+      <tr><td><code>compile_five_queries_rust</code></td><td>Multi-query compilation overhead</td></tr>
+      <tr><td><code>single_file/functions/N</code></td><td>Parse + query throughput for files with 10, 100, 500, 1000 functions</td></tr>
+      <tr><td><code>heap_read</code> vs <code>mmap_read</code></td><td>File reading strategy comparison</td></tr>
+      <tr><td><code>one_query</code> vs <code>five_queries</code></td><td>Single-pass multi-query overhead</td></tr>
+      <tr><td><code>parallel_100_files_20fn_each</code></td><td>Full parallel pipeline with result accumulation</td></tr>
+      <tr><td><code>compile_universal_query_all_languages</code></td><td>Auto mode query compilation across all 7 grammars</td></tr>
+    </tbody>
+  </table>
+
+  <p>CI fails on regressions exceeding 10% for parallel benchmarks and 2% for single-file benchmarks. Results are uploaded as GitHub Actions artifacts with HTML reports from Criterion.</p>
+</div>
+
+<hr class="section-rule">
+
+<!-- CONTRIBUTING -->
+<span class="anchor" id="contributing"></span>
+<div class="section">
+  <h2><span class="num">25</span>Contributing</h2>
+  <p class="section-intro">Contributions are welcome. The project is tracked issue-by-issue with milestones for each subsystem.</p>
+
+  <h3>Before opening a PR</h3>
+  <pre><span class="comment"># Format</span>
+cargo fmt
+
+<span class="comment"># Lint — zero warnings enforced</span>
+cargo clippy --all-features -- -D warnings
+
+<span class="comment"># Full test suite</span>
+cargo test --all-features</pre>
+
+  <p>All three must pass cleanly. The CI pipeline enforces <code>#![deny(warnings)]</code> and <code>#![warn(clippy::pedantic)]</code> across the entire codebase.</p>
+
+  <h3>Code style</h3>
+  <ul>
+    <li>No inline comments, no doc comments, no block comments anywhere in source files</li>
+    <li>All public items must have doc comments (enforced by <code>cargo doc --no-deps</code> zero warnings)</li>
+    <li>Use <code>Result&lt;T&gt;</code> (the crate's type alias for <code>Result&lt;T, AppError&gt;</code>) for all fallible functions</li>
+    <li>Never use <code>unwrap()</code> in production code — only in tests with an explanatory comment</li>
+    <li>Explicit <code>drop()</code> calls are mandatory after tree and source are no longer needed</li>
+  </ul>
+
+  <h3>Adding a new language</h3>
+  <ol>
+    <li>Add <code>tree-sitter-&lt;lang&gt;</code> to <code>Cargo.toml</code></li>
+    <li>Add a variant to <code>Language</code> enum in <code>types.rs</code></li>
+    <li>Add extension mapping in <code>walker.rs::extensions_for_language</code></li>
+    <li>Add grammar arm in <code>parser.rs::get_language</code></li>
+    <li>Add detection arm in <code>parser.rs::detect_language</code></li>
+    <li>Add variant in <code>parser.rs::get_all_languages</code></li>
+    <li>Add lang string to <code>main.rs::resolve_lang</code> and <code>validate</code></li>
+    <li>Add fixture file to <code>tests/fixtures/</code></li>
+    <li>Add integration tests following the pattern of existing language tests</li>
+  </ol>
+
+  <h3>License</h3>
+  <p>MIT — see <code>LICENSE</code>.</p>
+</div>
+
+</main>
+
+<script>
+const links = document.querySelectorAll('.nav-link');
+const sections = [];
+document.querySelectorAll('.anchor').forEach(a => {
+  if(a.id) sections.push(a);
+});
+
+function onScroll() {
+  let current = '';
+  sections.forEach(s => {
+    const top = s.getBoundingClientRect().top;
+    if(top < 120) current = s.id;
+  });
+  links.forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+  });
+}
+window.addEventListener('scroll', onScroll, {passive: true});
+onScroll();
+</script>
+</body>
+</html>
