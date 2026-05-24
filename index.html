@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dora — Documentation(Maps)</title>
+<title>doora — Documentation(Maps)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -553,7 +553,7 @@ hr.section-rule{border:none;border-top:1px solid var(--rule);margin:3rem 0}
 <!-- SIDEBAR -->
 <nav id="sidebar" aria-label="Documentation navigation">
   <div class="sidebar-logo">
-    <div class="brand">dora</div>
+    <div class="brand">doora</div>
     <div class="tagline">Structural Code Search</div>
   </div>
 
@@ -614,9 +614,9 @@ hr.section-rule{border:none;border-top:1px solid var(--rule);margin:3rem 0}
 <!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">Documentation · v0.1.0</div>
-  <h1>dora<br><em>Search code by shape,<br>not by text.</em></h1>
+  <h1>doora<br><em>Search code by shape,<br>not by text.</em></h1>
   <p class="hero-desc">
-    A high-performance structural code search engine built on Tree-sitter. Where grep sees a flat river of bytes, dora sees a grammar — functions, types, scopes, and relationships.
+    A high-performance structural code search engine built on Tree-sitter. Where grep sees a flat river of bytes, doora sees a grammar — functions, types, scopes, and relationships.
   </p>
   <div class="hero-badges">
     <span class="badge green">Rust</span>
@@ -628,7 +628,7 @@ hr.section-rule{border:none;border-top:1px solid var(--rule);margin:3rem 0}
   </div>
   <div class="hero-install">
     <span class="prompt">$</span>
-    <span>cargo install dora</span>
+    <span>cargo install doora</span>
   </div>
 </div>
 
@@ -637,12 +637,12 @@ hr.section-rule{border:none;border-top:1px solid var(--rule);margin:3rem 0}
 <div class="section">
   <h2><span class="num">01</span>Overview</h2>
   <p class="section-intro">
-    dora is a command-line tool that parses source files into Abstract Syntax Trees and executes structural pattern queries against them. It is fundamentally different from text search: it understands the grammar of your code, not just its characters.
+    doora is a command-line tool that parses source files into Abstract Syntax Trees and executes structural pattern queries against them. It is fundamentally different from text search: it understands the grammar of your code, not just its characters.
   </p>
 
   <p>Every text-based search tool — grep, ripgrep, ack — treats source code as a string. They cannot tell the difference between a function <em>named</em> <code>authenticate</code> and a comment that <em>mentions</em> <code>authenticate</code>. They cannot find "all functions that take exactly two arguments" or "all <code>unwrap()</code> calls outside test modules."</p>
 
-  <p>dora answers all of these queries instantly, across millions of lines of code, using Tree-sitter's incremental parsing library at its core.</p>
+  <p>doora answers all of these queries instantly, across millions of lines of code, using Tree-sitter's incremental parsing library at its core.</p>
 
   <div class="feature-grid">
     <div class="feature-card">
@@ -684,40 +684,40 @@ hr.section-rule{border:none;border-top:1px solid var(--rule);margin:3rem 0}
 <span class="anchor" id="installation"></span>
 <div class="section">
   <h2><span class="num">02</span>Installation</h2>
-  <p class="section-intro">dora is distributed as a single static binary. Install via Cargo, download a pre-built binary, or build from source.</p>
+  <p class="section-intro">doora is distributed as a single static binary. Install via Cargo, download a pre-built binary, or build from source.</p>
 
   <h3>From crates.io</h3>
   <pre><span class="comment"># Requires Rust 1.78+</span>
-cargo install dora</pre>
+cargo install doora</pre>
 
   <h3>Pre-built binaries</h3>
-  <p>Download from the <a href="https://github.com/backpack-lab/dora/releases">Releases page</a>. Binaries are available for:</p>
+  <p>Download from the <a href="https://github.com/backpack-lab/doora/releases">Releases page</a>. Binaries are available for:</p>
   <table>
     <thead><tr><th>Platform</th><th>Architecture</th><th>Binary</th></tr></thead>
     <tbody>
-      <tr><td>Linux</td><td>x86_64</td><td><code>dora-x86_64-unknown-linux-gnu</code></td></tr>
-      <tr><td>Linux</td><td>aarch64</td><td><code>dora-aarch64-unknown-linux-gnu</code></td></tr>
-      <tr><td>macOS</td><td>x86_64</td><td><code>dora-x86_64-apple-darwin</code></td></tr>
-      <tr><td>macOS</td><td>Apple Silicon</td><td><code>dora-aarch64-apple-darwin</code></td></tr>
-      <tr><td>Windows</td><td>x86_64</td><td><code>dora-x86_64-pc-windows-msvc.exe</code></td></tr>
+      <tr><td>Linux</td><td>x86_64</td><td><code>doora-x86_64-unknown-linux-gnu</code></td></tr>
+      <tr><td>Linux</td><td>aarch64</td><td><code>doora-aarch64-unknown-linux-gnu</code></td></tr>
+      <tr><td>macOS</td><td>x86_64</td><td><code>doora-x86_64-apple-darwin</code></td></tr>
+      <tr><td>macOS</td><td>Apple Silicon</td><td><code>doora-aarch64-apple-darwin</code></td></tr>
+      <tr><td>Windows</td><td>x86_64</td><td><code>doora-x86_64-pc-windows-msvc.exe</code></td></tr>
     </tbody>
   </table>
 
   <h3>From source</h3>
-  <pre>git clone https://github.com/backpack-lab/dora
-cd dora
+  <pre>git clone https://github.com/backpack-lab/doora
+cd doora
 cargo build --release
-<span class="comment"># Binary at ./target/release/dora</span></pre>
+<span class="comment"># Binary at ./target/release/doora</span></pre>
 
   <h3>Shell completions</h3>
   <pre><span class="comment"># Bash</span>
-dora --generate-completions bash >> ~/.bashrc
+doora --generate-completions bash >> ~/.bashrc
 
 <span class="comment"># Zsh</span>
-dora --generate-completions zsh >> ~/.zshrc
+doora --generate-completions zsh >> ~/.zshrc
 
 <span class="comment"># Fish</span>
-dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
+doora --generate-completions fish > ~/.config/fish/completions/doora.fish</pre>
 </div>
 
 <hr class="section-rule">
@@ -732,7 +732,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
   <div class="cli-block">
     <div class="cli-header">terminal</div>
     <div class="cli-body">
-<span class="cmd">dora</span> <span class="flag">-q</span> <span class="val">'(function_item name: (identifier) @fn_name)'</span> <span class="flag">-p</span> <span class="val">./src</span><br><br>
+<span class="cmd">doora</span> <span class="flag">-q</span> <span class="val">'(function_item name: (identifier) @fn_name)'</span> <span class="flag">-p</span> <span class="val">./src</span><br><br>
 <span class="out">src/auth/handler.rs:42:0  [@fn_name]  "parse_token"</span><br>
 <span class="out">src/auth/handler.rs:89:0  [@fn_name]  "validate_session"</span><br>
 <span class="out">src/db/pool.rs:14:0       [@fn_name]  "connect"</span><br>
@@ -742,27 +742,27 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
   </div>
 
   <h3>Find a specific function by name</h3>
-  <pre>dora \
+  <pre>doora \
   -q '(function_item name: (identifier) @fn (#eq? @fn "connect"))' \
   -p ./src</pre>
 
   <h3>Search multiple languages at once</h3>
-  <pre>dora \
+  <pre>doora \
   -q '(function_declaration name: (identifier) @fn_name)' \
   -p ./src
 <span class="comment"># auto-detects language per file</span></pre>
 
   <h3>Multiple queries in one pass</h3>
-  <pre>dora \
+  <pre>doora \
   -q '(function_item name: (identifier) @fn_name)' \
   -q '(struct_item name: (type_identifier) @struct_name)' \
   -p ./src --no-color</pre>
 
   <h3>Launch the interactive TUI</h3>
-  <pre>dora -q '(function_item)' -p . --tui</pre>
+  <pre>doora -q '(function_item)' -p . --tui</pre>
 
   <h3>Build a search index for faster queries</h3>
-  <pre>dora index ./src --verbose
+  <pre>doora index ./src --verbose
 <span class="comment"># Subsequent searches use Bloom filter pre-rejection</span></pre>
 </div>
 
@@ -775,7 +775,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
   <p class="section-intro">Text search has fundamental limitations that no amount of regex cleverness can overcome. Structural search solves them categorically.</p>
 
   <table>
-    <thead><tr><th>Query</th><th>grep / ripgrep</th><th>dora</th></tr></thead>
+    <thead><tr><th>Query</th><th>grep / ripgrep</th><th>doora</th></tr></thead>
     <tbody>
       <tr>
         <td>Find function definitions named <code>auth_user</code></td>
@@ -807,7 +807,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
 
   <div class="callout">
     <div class="callout-title">The key insight</div>
-    <p>dora is to grep what a SQL database is to a flat text file. Both store the same data; one understands its structure.</p>
+    <p>doora is to grep what a SQL database is to a flat text file. Both store the same data; one understands its structure.</p>
   </div>
 </div>
 
@@ -817,7 +817,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
 <span class="anchor" id="how-ast-works"></span>
 <div class="section">
   <h2><span class="num">05</span>How AST search works</h2>
-  <p class="section-intro">Source code has grammar. Every language defines how tokens nest into expressions, expressions into statements, and statements into functions and modules. dora makes this grammar queryable.</p>
+  <p class="section-intro">Source code has grammar. Every language defines how tokens nest into expressions, expressions into statements, and statements into functions and modules. doora makes this grammar queryable.</p>
 
   <h3>From bytes to tree</h3>
   <p>Consider this Rust function:</p>
@@ -847,7 +847,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
   <p>An S-expression query navigates this tree structure. The query <code>(function_item name: (identifier) @fn)</code> matches any <code>function_item</code> node that has a <code>name</code> child of type <code>identifier</code>, and captures that identifier as <code>@fn</code>.</p>
 
   <h3>CST vs AST</h3>
-  <p>Traditional compilers produce Abstract Syntax Trees (ASTs) that discard whitespace, comments, and punctuation. dora uses Concrete Syntax Trees (CSTs) that retain 100% fidelity to the original source — including exact byte offsets for every token. This is required for:</p>
+  <p>Traditional compilers produce Abstract Syntax Trees (ASTs) that discard whitespace, comments, and punctuation. doora uses Concrete Syntax Trees (CSTs) that retain 100% fidelity to the original source — including exact byte offsets for every token. This is required for:</p>
   <ul>
     <li>Accurately mapping matches back to line and column numbers for display</li>
     <li>Semantic rewriting that preserves the user's original formatting</li>
@@ -890,7 +890,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
   <p>The <code>(_)</code> wildcard matches any single node. Use <code>.</code> as an anchor.</p>
 
   <h3>Multi-query (single pass)</h3>
-  <pre>dora \
+  <pre>doora \
   -q '(function_item name: (identifier) @fn_name)' \
   -q '(struct_item name: (type_identifier) @struct_name)' \
   -p ./src</pre>
@@ -903,12 +903,12 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
 <span class="anchor" id="cli-search"></span>
 <div class="section">
   <h2><span class="num">07</span>CLI — search command</h2>
-  <p class="section-intro">The default command. When no subcommand is given, dora runs a structural search.</p>
+  <p class="section-intro">The default command. When no subcommand is given, doora runs a structural search.</p>
 
   <div class="cli-block">
     <div class="cli-header">usage</div>
     <div class="cli-body">
-<span class="cmd">dora</span> [search] [OPTIONS] <span class="flag">--query</span> <span class="val">&lt;S-EXPR&gt;</span>
+<span class="cmd">doora</span> [search] [OPTIONS] <span class="flag">--query</span> <span class="val">&lt;S-EXPR&gt;</span>
     </div>
   </div>
 
@@ -1013,7 +1013,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
   <div class="cli-block">
     <div class="cli-header">usage</div>
     <div class="cli-body">
-<span class="cmd">dora index</span> <span class="val">&lt;PATH&gt;</span> [OPTIONS]
+<span class="cmd">doora index</span> <span class="val">&lt;PATH&gt;</span> [OPTIONS]
     </div>
   </div>
 
@@ -1049,11 +1049,11 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
 <span class="out">fresh:   src/main.rs</span><br>
 <span class="out">removed: src/old/legacy.rs</span><br><br>
 <span class="cmt">indexed 44 files, skipped 2 fresh, removed 1 stale entries</span><br>
-<span class="cmt">index written to .dora-index</span>
+<span class="cmt">index written to .doora-index</span>
     </div>
   </div>
 
-  <p>The index is stored at <code>&lt;PATH&gt;/.dora-index</code> as a binary file serialized with bincode. It is a manifest of per-file Bloom filter entries, each containing:</p>
+  <p>The index is stored at <code>&lt;PATH&gt;/.doora-index</code> as a binary file serialized with bincode. It is a manifest of per-file Bloom filter entries, each containing:</p>
   <ul>
     <li>Absolute file path</li>
     <li>Last-modified timestamp (seconds since Unix epoch)</li>
@@ -1287,7 +1287,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
 <span class="anchor" id="lang-auto"></span>
 <div class="section">
   <h2><span class="num">12</span>Language auto-detection</h2>
-  <p class="section-intro">When <code>--lang auto</code> is used (the default), dora detects the grammar per file from its extension and walks all supported extensions simultaneously.</p>
+  <p class="section-intro">When <code>--lang auto</code> is used (the default), doora detects the grammar per file from its extension and walks all supported extensions simultaneously.</p>
 
   <table>
     <thead><tr><th>Language flag</th><th>Extensions walked</th><th>Grammar</th></tr></thead>
@@ -1374,12 +1374,12 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
 <span class="anchor" id="rewriting"></span>
 <div class="section">
   <h2><span class="num">14</span>Semantic rewriting</h2>
-  <p class="section-intro">dora can surgically replace structural patterns without corrupting surrounding syntax. This is fundamentally different from sed — it operates on the AST, not on text.</p>
+  <p class="section-intro">doora can surgically replace structural patterns without corrupting surrounding syntax. This is fundamentally different from sed — it operates on the AST, not on text.</p>
 
   <div class="cli-block">
     <div class="cli-header">preview a rename (dry run)</div>
     <div class="cli-body">
-<span class="cmd">dora</span> <span class="flag">-q</span> <span class="val">'(function_item name: (identifier) @fn (#eq? @fn "old_name"))'</span> \<br>
+<span class="cmd">doora</span> <span class="flag">-q</span> <span class="val">'(function_item name: (identifier) @fn (#eq? @fn "old_name"))'</span> \<br>
 &nbsp;&nbsp;<span class="flag">--rewrite</span> <span class="val">'new_name'</span> \<br>
 &nbsp;&nbsp;<span class="flag">-p</span> <span class="val">./src</span>
     </div>
@@ -1388,7 +1388,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
   <div class="cli-block">
     <div class="cli-header">apply rewrites in place</div>
     <div class="cli-body">
-<span class="cmd">dora</span> <span class="flag">-q</span> <span class="val">'(function_item name: (identifier) @fn (#eq? @fn "old_name"))'</span> \<br>
+<span class="cmd">doora</span> <span class="flag">-q</span> <span class="val">'(function_item name: (identifier) @fn (#eq? @fn "old_name"))'</span> \<br>
 &nbsp;&nbsp;<span class="flag">--rewrite</span> <span class="val">'new_name'</span> \<br>
 &nbsp;&nbsp;<span class="flag">--in-place</span> \<br>
 &nbsp;&nbsp;<span class="flag">-p</span> <span class="val">./src</span>
@@ -1414,7 +1414,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
   <div class="cli-block">
     <div class="cli-header">launch the TUI</div>
     <div class="cli-body">
-<span class="cmd">dora</span> <span class="flag">-q</span> <span class="val">'(function_item)'</span> <span class="flag">-p</span> <span class="val">.</span> <span class="flag">--tui</span>
+<span class="cmd">doora</span> <span class="flag">-q</span> <span class="val">'(function_item)'</span> <span class="flag">-p</span> <span class="val">.</span> <span class="flag">--tui</span>
     </div>
   </div>
 
@@ -1455,20 +1455,20 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
 <span class="anchor" id="mcp"></span>
 <div class="section">
   <h2><span class="num">16</span>MCP server mode</h2>
-  <p class="section-intro">dora exposes a Model Context Protocol server so LLM coding agents can query your codebase structurally, reducing hallucinations and wasted context tokens.</p>
+  <p class="section-intro">doora exposes a Model Context Protocol server so LLM coding agents can query your codebase structurally, reducing hallucinations and wasted context tokens.</p>
 
   <h3>Why LLMs need structural search</h3>
   <p>LLM coding agents have limited context windows. When an agent tries to understand a large codebase by reading files, it burns context tokens on irrelevant content and still has no structural understanding of the architecture.</p>
-  <p>With the dora MCP server, an agent can ask: <em>"What is the exact type signature of the function handling user authentication?"</em> and receive a precise, structured answer in milliseconds — consuming a fraction of the context tokens that reading source files would require.</p>
+  <p>With the doora MCP server, an agent can ask: <em>"What is the exact type signature of the function handling user authentication?"</em> and receive a precise, structured answer in milliseconds — consuming a fraction of the context tokens that reading source files would require.</p>
 
   <h3>Setup</h3>
   <div class="cli-block">
     <div class="cli-header">build the index first</div>
-    <div class="cli-body"><span class="cmd">dora index</span> <span class="flag">--persist</span> <span class="flag">-p</span> <span class="val">.</span></div>
+    <div class="cli-body"><span class="cmd">doora index</span> <span class="flag">--persist</span> <span class="flag">-p</span> <span class="val">.</span></div>
   </div>
   <div class="cli-block">
     <div class="cli-header">start the MCP server</div>
-    <div class="cli-body"><span class="cmd">dora serve</span> <span class="flag">--mcp</span></div>
+    <div class="cli-body"><span class="cmd">doora serve</span> <span class="flag">--mcp</span></div>
   </div>
 
   <div class="mcp-box">
@@ -1476,8 +1476,8 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
     <p>Add to your project's MCP configuration file:</p>
     <pre>{
   "mcpServers": {
-    "dora": {
-      "command": "dora",
+    "doora": {
+      "command": "doora",
       "args": ["serve", "--mcp"],
       "cwd": "/path/to/your/repo"
     }
@@ -1644,7 +1644,7 @@ dora --generate-completions fish > ~/.config/fish/completions/dora.fish</pre>
 <span class="anchor" id="memory"></span>
 <div class="section">
   <h2><span class="num">20</span>Architecture — memory model</h2>
-  <p class="section-intro">dora maintains a flat RAM profile regardless of repository size by enforcing an ephemeral tree lifecycle.</p>
+  <p class="section-intro">doora maintains a flat RAM profile regardless of repository size by enforcing an ephemeral tree lifecycle.</p>
 
   <h3>Ephemeral lifecycle</h3>
   <p>When parsing a file with text search, only a small buffer needs to be in memory. With AST-based search, parsing a file produces a large C-allocated structure with potentially tens of thousands of nodes. If all trees were retained simultaneously, a 10,000-file repository would require tens of gigabytes of RAM.</p>
@@ -1680,7 +1680,7 @@ FileSource::Mapped(memmap2::Mmap)</pre>
 <span class="anchor" id="perf"></span>
 <div class="section">
   <h2><span class="num">21</span>Performance</h2>
-  <p class="section-intro">dora is engineered for sub-second query latency on repositories with millions of lines of code.</p>
+  <p class="section-intro">doora is engineered for sub-second query latency on repositories with millions of lines of code.</p>
 
   <h3>Benchmark results</h3>
   <table>
@@ -1735,7 +1735,7 @@ cargo install flamegraph
 make profile
 
 <span class="comment"># Or manually</span>
-cargo flamegraph --bin dora -- \
+cargo flamegraph --bin doora -- \
   -q '(function_item name: (identifier) @fn_name)' \
   -p /path/to/large/repo --lang rust --no-color --quiet</pre>
   <p>See <code>PROFILING.md</code> for detailed instructions and interpretation guidance.</p>
@@ -1801,7 +1801,7 @@ cargo test --test integration_test -- --nocapture
 cargo test --test bloom_statistics -- --nocapture
 
 <span class="comment"># Run binary tests (CLI validation, stats)</span>
-cargo test --bin dora</pre>
+cargo test --bin doora</pre>
 
   <h3>Test inventory</h3>
   <table>
